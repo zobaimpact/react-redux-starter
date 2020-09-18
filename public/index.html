@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Logistico</title>
+    <!-- Bootstrap core CSS -->
+    <link href="%PUBLIC_URL%/local/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation CSS -->
+    <link href="%PUBLIC_URL%/local/css/animate.css" rel="stylesheet" />
+    <link
+      href="%PUBLIC_URL%/local/font-awesome/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template -->
+    <link href="%PUBLIC_URL%/local/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="gray-bg">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <script src="%PUBLIC_URL%/local/js/jquery-3.1.1.min.js"></script>
+    <script src="%PUBLIC_URL%/local/js/popper.min.js"></script>
+    <script src="%PUBLIC_URL%/local/js/bootstrap.js"></script>
+    <script src="%PUBLIC_URL%/local/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="%PUBLIC_URL%/local/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="%PUBLIC_URL%/local/js/inspinia.js"></script>
+    <script src="%PUBLIC_URL%/local/js/plugins/pace/pace.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $("body").scrollspy({
+          target: "#navbar",
+          offset: 80
+        });
+
+        // Page scrolling feature
+        $("a.page-scroll").bind("click", function(event) {
+          var link = $(this);
+          $("html, body")
+            .stop()
+            .animate(
+              {
+                scrollTop: $(link.attr("href")).offset().top - 50
+              },
+              500
+            );
+          event.preventDefault();
+          $("#navbar").collapse("hide");
+        });
+      });
+
+      var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+          header = document.querySelector(".navbar-default"),
+          didScroll = false,
+          changeHeaderOn = 200;
+        function init() {
+          window.addEventListener(
+            "scroll",
+            function(event) {
+              if (!didScroll) {
+                didScroll = true;
+                setTimeout(scrollPage, 250);
+              }
+            },
+            false
+          );
+        }
+        function scrollPage() {
+          var sy = scrollY();
+          if (sy >= changeHeaderOn) {
+            $(header).addClass("navbar-scroll");
+          } else {
+            $(header).removeClass("navbar-scroll");
+          }
+          didScroll = false;
+        }
+        function scrollY() {
+          return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+      })();
+    </script>
+  </body>
+</html>
